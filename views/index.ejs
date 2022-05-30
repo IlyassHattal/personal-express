@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Pizza!</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<div id="whole">
+		<h1 id="le">Eli Pizzaria</h1>
+		<form action='/order' method='POST'>
+			<span id="type">Style?</span>
+			<select class="typeDrink" name="type" required>
+				<option value="none" selected hidden></option>
+				<option value="Cheese">Cheese</option>
+				<option value="Pepperoni">Pepperoni</option>
+				<option value="Buffalo Chicken">Buffalo Chicken</option>
+			</select>
+
+			<span id="temp">Small or Large?</span>
+			<select class="tempDrink" name="temp" required>
+				<option value="none" selected hidden></option>
+				<option value="Small">Small</option>
+				<option value="Large">Large</option>
+			</select>
+
+			<span id="sweet">How do you want it baked?</span>
+			<select class="sweetHere" name="sweet" required>
+				<option value="none" selected hidden></option>
+				<option value="Medium">Medium</option>
+				<option value="Well Done">Well Done</option>
+				<option value="Chefs Choice">Chefs Choice?</option>
+			</select><br><br>
+
+			<button type="submit" id="complete">Get Ya Pizza</button>
+			<button type="button" id="delete">Throw The pizza away and start again</button>
+		</form><br>
+
+		<h2 id="receipt">Order(s):</h2>
+
+		<ul>
+			<% for (let [key, indivOrder] of Object.entries(coffeeOrders)){ %>
+
+			<!-- used to do data parsing, any logic thats not directly outputting to dom  -->
+			<li data-id="<%=indivOrder.id%>"> <%= `1 ${indivOrder.type}: ${indivOrder.temp} & ${indivOrder.sweet}, please! `%>
+			</li>
+			<!-- use this syntax to output ot dom  -->
+			<% } %>
+		</ul>
+	</div>
+	<script type="text/javascript" src="main.js"></script>
+	</script>
+</body>
+
+</html>
